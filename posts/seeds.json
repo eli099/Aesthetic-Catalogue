@@ -1,0 +1,15 @@
+[
+{
+  "model": "posts.post",
+  "pk": 1,
+  "fields": {
+    "image": "https://vikalinka.com/wp-content/uploads/2020/09/Sourdough-Bread-Recipe-6-Edit.jpg",
+    "title": "test",
+    "description": "test",
+    "artist": "test",
+    "source": "test",
+    "year": 2001,
+    "tags": "[\"avant garde\", \"experimental\"]"
+  }
+}
+]
