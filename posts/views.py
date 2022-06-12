@@ -62,11 +62,11 @@ class PostDetailView(APIView):
             raise NotFound({ 'detail': str(e) })
     
     # GET
-    # Description: Return on post
+    # Description: Return one post
     def get(self, _request, pk):
         post = self.get_post(pk)
         print("Post ->", post)
-        serialized_post = PostSerializer(post) # ! Return post data with comments included
+        serialized_post = PopulatedPostSerializer(post) # ! Return post data with comments included
         return Response(serialized_post.data, status.HTTP_200_OK)
     
     # PUT
