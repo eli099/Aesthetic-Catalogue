@@ -3,13 +3,96 @@
   "model": "posts.post",
   "pk": 1,
   "fields": {
-    "image": "https://vikalinka.com/wp-content/uploads/2020/09/Sourdough-Bread-Recipe-6-Edit.jpg",
-    "title": "test",
-    "description": "test",
-    "artist": "test",
-    "source": "test",
-    "year": 2001,
-    "tags": "[\"avant garde\", \"experimental\"]"
+    "image": "https://64.media.tumblr.com/6f5dca73a301dda4272336ea6a43a155/tumblr_ndeycebn5o1qgmu5uo1_1280.gifv",
+    "title": "H20 (saltwater/freshwater) Pavilion",
+    "description": "Interactive installation, Rotterdam, Holland.",
+    "artist": "Lars Spuybroek, photo by Neeltje Jans",
+    "source": "https://avtavr.tumblr.com/post/99963040857/nox-architecture-by-lars-spuybroek-h20",
+    "year": 1998,
+    "tags": "[\"y2k\", \"architecture\", \"blue\"]",
+    "categories": [
+      1
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 2,
+  "fields": {
+    "image": "https://64.media.tumblr.com/20687a0889065f7cba99a2e5c4989caa/e91df44000f0e6c0-f4/s1280x1920/32085acef6e6b4e1113d329dfd4684d28b071f53.jpg",
+    "title": "J-Phone January 2000 | 王菲 (Faye Wong)",
+    "description": "J-Phone January 2000 | 王菲 (Faye Wong)",
+    "artist": "Unknown",
+    "source": "https://m.weibo.cn/detail/4683165609756268",
+    "year": 2000,
+    "tags": "[\"gen-x soft club\", \"editorial\", \"ethereal\"]",
+    "categories": [
+      6
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 3,
+  "fields": {
+    "image": "https://i.pinimg.com/564x/fc/7c/37/fc7c3752dcd0b3de6207c4095becb398.jpg",
+    "title": "Unititled",
+    "description": "-",
+    "artist": "Unknown",
+    "source": "https://www.pinterest.co.uk/residenteviI2/",
+    "year": 1999,
+    "tags": "[\"gen-x soft club\"]",
+    "categories": [
+      6
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 15,
+  "fields": {
+    "image": "https://blog.matfloor.net/wp-content/uploads/2021/05/grounthwaite3-791x1024.jpg",
+    "title": "Levi's SilverTab advertising campaign",
+    "description": "",
+    "artist": "Graham Rounthwaite",
+    "source": "https://blog.matfloor.net/2021/08/23/pen-and-mouse-book-addendum/",
+    "year": 1998,
+    "tags": "[\"gen-x soft club\"]",
+    "categories": [
+      6
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 17,
+  "fields": {
+    "image": "https://blog.matfloor.net/wp-content/uploads/2021/08/faiyazjafri2-1024x738.jpg",
+    "title": "Napster",
+    "description": "Commissioned by Spin magazine",
+    "artist": "Kam Tang",
+    "source": "https://blog.matfloor.net/2021/08/23/pen-and-mouse-book-addendum/",
+    "year": null,
+    "tags": "[]",
+    "categories": [
+      1
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 20,
+  "fields": {
+    "image": "https://i.discogs.com/1efuBT4mE9zwSoMcAlH7WAEaD7SYbLc4CjsTcucWZII/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTc3NjU5/MTQtMTQ0ODMxNDkx/My0yNzMwLmpwZWc.jpeg",
+    "title": "スタートキーを押し",
+    "description": "",
+    "artist": "猫 シ Corp.",
+    "source": "https://www.discogs.com/release/7765914-%E7%8C%AB-%E3%82%B7-Corp-%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E6%8A%BC%E3%81%97",
+    "year": 2013,
+    "tags": "[\"music\", \"musician\"]",
+    "categories": [
+      2
+    ]
   }
 }
 ]

@@ -1,0 +1,42 @@
+[
+{
+  "model": "jwt_auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$pKwSzVn4crZuNJQS1DW7hg$wuZBzQqxDgacnEvVabZEtelZmmTKoK+aW0Mr1xN5/nk=",
+    "last_login": "2022-06-11T11:11:27.416Z",
+    "is_superuser": true,
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-06-10T14:11:39Z",
+    "email": "el@email.com",
+    "username": "eliott",
+    "first_name": "Eliott",
+    "last_name": "McKenzie",
+    "bio": "Owner 👨🏾‍💻",
+    "profile_pic": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$7B7sgfBJbargwD9Xsndd7t$qIL1oZMPR/TaggzVTMlwM5s69vKdjRQ6JSgGTvUP0w8=",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-06-12T23:33:27.594Z",
+    "email": "test@email.com",
+    "username": "test",
+    "first_name": "test",
+    "last_name": "test",
+    "bio": "",
+    "profile_pic": "",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
