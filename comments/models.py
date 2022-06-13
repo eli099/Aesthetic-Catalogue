@@ -10,3 +10,8 @@ class Comment(models.Model):
         related_name='comments', # The field on the 'one' in the 'one to many' relationship
         on_delete= models.CASCADE # 'CASCADE' so that comments are deleted if Post is deleted
     )
+    owner = models.ForeignKey(
+        "jwt_auth.User",
+        related_name="comments",
+        on_delete=models.CASCADE
+    )
