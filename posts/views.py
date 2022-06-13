@@ -1,10 +1,11 @@
 # Import rest_framework
+from xml.dom import ValidationErr
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
 # Import exceptions
-from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import NotFound, ValidationError
 
 # ? Custom imports
 # Model to use to query the database
@@ -16,8 +17,13 @@ from .serializers.common import PostSerializer
 # Import populated serializer for comments
 from .serializers.populated import PopulatedPostSerializer
 
+# Import Perissions
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 # Create your views here.
 class PostListView(APIView):
+    
+    permission_classes = (IsAuthenticatedOrReadOnly, )
     
     # ? Endpoint & Method
     # /posts/
@@ -38,13 +44,15 @@ class PostListView(APIView):
         deserialized_post = PostSerializer(data=request.data)
         try:
             # Check if has required and valid fields
-            deserialized_post.is_valid()
+            deserialized_post.is_valid(True)
             # Save the record to the database
             deserialized_post.save()
             return Response(deserialized_post.data, status.HTTP_201_CREATED)
+        except ValidationError:
+            return Response(deserialized_post.errors, status.HTTP_422_UNPROCESSABLE_ENTITY)
         except Exception as e:
-            print(type(e))
-            print(e)
+            print("error type ->", type(e))
+            print("error ->", e)
             # Return the validation error
             return Response({ 'detail': str(e) }, status.HTTP_422_UNPROCESSABLE_ENTITY)
         
@@ -70,7 +78,7 @@ class PostDetailView(APIView):
         return Response(serialized_post.data, status.HTTP_200_OK)
     
     # PUT
-    # Description: Edit one postf from the posts table
+    # Description: Edit one post from the posts table
     def put(self, request, pk):
         post = self.get_post(pk)
         print("Post ->", post)

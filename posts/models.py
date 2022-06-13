@@ -12,6 +12,10 @@ class Post(models.Model):
     artist = models.CharField(max_length=300, default=None)
     source = models.CharField(max_length=500, default=None)
     year = models.PositiveIntegerField(default=None, blank=True, null=True)
+    categories = models.ManyToManyField(
+        'categories.Category',
+        related_name='posts'
+    )
     tags = ArrayField(base_field=models.CharField(max_length=50, blank=True, default=list), size=6, blank=True, default=list)
     
     # Return a string of the 
