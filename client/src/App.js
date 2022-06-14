@@ -1,16 +1,33 @@
 import { useEffect } from 'react'
-import axios from 'axios'
+import Spinner from 'react-bootstrap/esm/Spinner'
+
+// Import React router
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+// Import Components
+import Home from './components/Home'
+import NavBarPage from './components/NavBarPage'
+import PostIndex from './components/posts/PostIndex'
+import PostShow from './components/posts/PostShow'
+import SpinnerIcon from './components/utilities/SpinnerIcon'
+import Register from './components/auth/Register'
 
 const App = () => {
-  useEffect(() => {
-    const getData = async () => {
-      const { data } = await axios.get('/api/posts/') // * <-- replace with your endpoint
-      console.log(data)
-    }
-    getData()
-  })
 
-  return <h1>Hello World</h1>
+  return (
+    <>
+      <BrowserRouter>
+        <NavBarPage />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/posts" element={<PostIndex />} />
+          <Route path="/posts/:id" element={<PostShow />} />
+          {/* Auth routes */}
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
 
 export default App
