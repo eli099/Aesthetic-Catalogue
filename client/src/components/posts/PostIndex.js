@@ -38,7 +38,7 @@ const PostIndex = () => {
   return (
     <>
       {posts ?
-        <Container>
+        <Container className="mt-3">
           <Row>
             {posts.map((post) => {
               console.log(post)

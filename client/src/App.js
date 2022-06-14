@@ -11,6 +11,7 @@ import PostIndex from './components/posts/PostIndex'
 import PostShow from './components/posts/PostShow'
 import SpinnerIcon from './components/utilities/SpinnerIcon'
 import Register from './components/auth/Register'
+import Login from './components/auth/Login'
 
 const App = () => {
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/posts/:id" element={<PostShow />} />
           {/* Auth routes */}
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -7,8 +7,14 @@ import Form from 'react-bootstrap/Form'
 import FloatingLabel from 'react-bootstrap/esm/FloatingLabel'
 import Button from 'react-bootstrap/esm/Button'
 
+// Import react navigation
+import { Navigate, useNavigate } from 'react-router-dom'
+
 
 const Register = () => {
+
+  // Navigate
+  const navigate = useNavigate()
 
   // Form data passed by user
   const [ formData, setFormData ] = useState({
@@ -35,6 +41,7 @@ const Register = () => {
     console.log(e.target.name, e.target.value)
     setFormData({ ...formData, [e.target.name]: e.target.value })
     console.log('form data ->', formData)
+    setErrors({ ...errors, [e.target.name]: '' })
   }
 
   // Submit formData object with input fields to the register endpoint
@@ -43,6 +50,7 @@ const Register = () => {
     try {
       const response = await axios.post('/api/auth/register/', formData)
       console.log('response ->', response)
+      navigate('/login/')
     } catch (error) {
       console.log('error ->', error)
       console.log('error response ->', error.response)
@@ -69,21 +77,25 @@ const Register = () => {
         <Form.Group className="mb-3">
           <FloatingLabel controlId="floatingInput" label="First name">
             <Form.Control name="first_name" type="text" placeholder="First name" onChange={handleChange} />
+            {errors.first_name && <Form.Text className="text-info">{errors.first_name}</Form.Text>}
           </FloatingLabel>
         </Form.Group>
         <Form.Group className="mb-3">
           <FloatingLabel controlId="floatingInput" label="Last name">
             <Form.Control name="last_name" type="text" placeholder="Last name" onChange={handleChange} />
+            {errors.last_name && <Form.Text className="text-info">{errors.last_name}</Form.Text>}
           </FloatingLabel>
         </Form.Group>
         <Form.Group className="mb-3">
           <FloatingLabel controlId="floatingInput" label="Password">
             <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange} />
+            {errors.password && <Form.Text className="text-info">{errors.password}</Form.Text>}
           </FloatingLabel>
         </Form.Group>
         <Form.Group className="mb-3">
           <FloatingLabel controlId="floatingInput" label="Password confirmation">
             <Form.Control name="password_confirmation" type="password" placeholder="Password confirmation" onChange={handleChange} />
+            {errors.password_confirmation && <Form.Text className="text-info">{errors.password_confirmation}</Form.Text>}
           </FloatingLabel>
         </Form.Group>
         <Button type="submit">
