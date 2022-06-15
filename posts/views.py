@@ -7,9 +7,17 @@ from rest_framework import status
 # Import exceptions
 from rest_framework.exceptions import NotFound, ValidationError
 
+# Import user model
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 # ? Custom imports
 # Model to use to query the database
 from .models import Post
+
+# ! Import user serializer
+from jwt_auth.serializers.common import UserSerializer
 
 # ! Import post serializer
 from .serializers.common import PostSerializer
@@ -95,7 +103,37 @@ class PostDetailView(APIView):
     # Description: Delete a post from the posts table
     def delete(self, _request, pk):
         post = self.get_post(pk)
-        print("print ->", post)
+        print("post ->", post)
         post.delete()
         serialized_post = PostSerializer(post)
         return Response(status.HTTP_204_NO_CONTENT)
+    
+# class AddFavouriteView(APIView):    
+#     # ? Add Post to user's favourites
+    
+#     # ? Custom Function
+#     # Description: find specific post based on it's pk. If it's not there then throw an error
+#     def get_post(self, pk):
+#         try:
+#             return Post.objects.get(pk=pk) # Find post where its pk is the same as the pk in the request endpoint
+#         except Post.DoesNotExist as e:
+#             print(e)
+#             raise NotFound({ 'detail': str(e) })
+    
+    # # PUT
+    # # Description: Push post details to user's favourites array
+    # def put(self, request, pk):
+    #     post = self.get_post(pk) # Find post information in database
+        
+    #     print("post to add ->", post)
+    #     print('get user ->', request.user.bio)
+    #     # Find user
+    #     user = User.objects.get(email=request.user.email)
+    #     serialized_user = UserSerializer(user)
+    #     print('user to add fav ->', serialized_user)
+    #     # Serialize post
+    #     serialized_post = PostSerializer(post, pk)
+    #     # Push post to user favourites array
+    #     print('users favourites ->', serialized_user.data)
+    #     serialized_user.data.favourites.append(serialized_post)
+    #     return Response(serialized_user.data)

@@ -38,6 +38,12 @@ const Login = () => {
     window.localStorage.setItem('aesthetic', token)
   }
 
+  // Save user profile to local storage
+  const saveUserProfile = (user) => {
+    // Convert user object to string before saving to localStorage
+    window.localStorage.setItem('aesthetic-user', JSON.stringify(user))
+  }
+
   // Submit formData object with input fields to the register endpoint
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -45,11 +51,14 @@ const Login = () => {
       const { data } = await axios.post('/api/auth/login/', formData)
       console.log('response ->', data)
       setTokenToLocalStorage(data.token)
-      navigate('/posts')
+      saveUserProfile(data.user)
+      console.log('parsed user ->', JSON.parse(window.localStorage.getItem('aesthetic-user')
+      ))
+      // navigate('/posts')
     } catch (error) {
       console.log('error ->', error)
       console.log('error response ->', error.response)
-      console.log('error response data ->', error.response.data)
+      // console.log('error response data ->', error.response.data)
       setErrors(true)
     }
   }

@@ -12,6 +12,7 @@ import PostShow from './components/posts/PostShow'
 import SpinnerIcon from './components/utilities/SpinnerIcon'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import ProfilePage from './components/ProfilePage'
 
 const App = () => {
 
@@ -26,6 +27,8 @@ const App = () => {
           {/* Auth routes */}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          {/* User profile */}
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </>
