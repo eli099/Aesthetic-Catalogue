@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // Need user auth to access info on this page
-import { userIsAuthenticated } from './helpers/auth'
+import { getTokenFromLocalStorage, userIsAuthenticated } from './helpers/auth'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -15,6 +15,9 @@ import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/esm/Spinner'
 import Card from 'react-bootstrap/Card'
 
+// Import axios
+import axios from 'axios'
+
 
 const ProfilePage = () => {
 
@@ -22,15 +25,34 @@ const ProfilePage = () => {
 
   const [profile, setProfile] = useState(null)
 
+  // ! Get profile using localStorage
+  // useEffect(() => {
+  //   const getProfile = () => {
+  //     if (!userIsAuthenticated) {
+  //       navigate('/login')
+  //     } else {
+  //       const userString = window.localStorage.getItem('aesthetic-user')
+  //       setProfile(JSON.parse(userString))
+  //       console.log('profile from local storage ->', profile)
+  //       console.log('type of ->', typeof (profile))
+  //     }
+  //   }
+  //   getProfile()
+  // }, [])
+
+  // ! Get profile with get request
   useEffect(() => {
-    const getProfile = () => {
-      if (!userIsAuthenticated) {
-        navigate('/login')
-      } else {
-        const userString = window.localStorage.getItem('aesthetic-user')
-        setProfile(JSON.parse(userString))
-        console.log('profile from local storage ->', profile)
-        console.log('type of ->', typeof (profile))
+    const getProfile = async () => {
+      try {
+        const { data } = await axios.get('/api/auth/prof/', {
+          headers: {
+            Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+          },
+        })
+        console.log('data ->', data)
+        setProfile(data)
+      } catch (error) {
+        console.log('error ->', error)
       }
     }
     getProfile()

@@ -22,14 +22,14 @@ User = get_user_model()
 # Import jwt
 
 # Import Perissions
-# from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
 
 class RegisterView(APIView):
 
-    # permission_classes = (AllowAny, )
+    
 
     def post(self, request):
         print("Request Body ->", request.data)
@@ -78,14 +78,15 @@ class LoginView(APIView):
                 "message": f"Welcome back, {user_to_validate.username}",
                 "token": token,
                 "user": {
+                    "id": user_to_validate.id,
                     "email": user_to_validate.email,
                     "username":  user_to_validate.username,
                     "first_name": user_to_validate.first_name,
                     "last_name": user_to_validate.last_name,
                     "bio": user_to_validate.bio,
                     "profile_pic": user_to_validate.profile_pic,
-                    "favourites": user_to_validate.favourites
-                }
+                },
+                # "favourites": user_to_validate.objects.all()
             },
             status.HTTP_202_ACCEPTED)
 
@@ -105,3 +106,15 @@ class LoginView(APIView):
         # except Exception as e:
         #     print("Error type ->", type(e))
         #     return Response({'detail': str(e)}, status.HTTP_422_UNPROCESSABLE_ENTITY)
+        
+class ProfileView(APIView):
+    
+    permission_classes = (IsAuthenticated, )
+    
+    def get(self, request):
+        print('get user ->', request.user)
+        # print('get data ->', request.data)
+        user_to_find = User.objects.get(username=request.user)
+        print('user_to_find ->', user_to_find.username)
+        serialized = UserSerializer(user_to_find)
+        return Response(serialized.data, status=status.HTTP_200_OK)

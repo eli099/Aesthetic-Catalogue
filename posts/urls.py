@@ -6,5 +6,4 @@ from .views import PostListView, PostDetailView
 urlpatterns = [
     path('', PostListView.as_view()), # Returns all posts
     path('<int:pk>/', PostDetailView.as_view()), # Returns one specific post - based on its pk
-    # path('fav/<int:pk>/', AddFavouriteView.as_view())
 ]

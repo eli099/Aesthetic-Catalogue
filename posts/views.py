@@ -40,7 +40,7 @@ class PostListView(APIView):
     # Description: Returns all posts
     def get(self, _request):
         posts = Post.objects.all() # get all objects from the database
-        serialized_posts = PostSerializer(posts, many=True)
+        serialized_posts = PopulatedPostSerializer(posts, many=True)
         print("serialized data ->", serialized_posts.data)
         return Response(serialized_posts.data, status=status.HTTP_200_OK)
     
@@ -48,6 +48,7 @@ class PostListView(APIView):
     # Description: Add a new post to the database
     def post(self, request):
         print("Request ->", request.data)
+        request.data["owner"] = request.user.id
         # Deserialize the data
         deserialized_post = PostSerializer(data=request.data)
         try:
@@ -82,7 +83,7 @@ class PostDetailView(APIView):
     def get(self, _request, pk):
         post = self.get_post(pk)
         print("Post ->", post)
-        serialized_post = PopulatedPostSerializer(post) # ! Return post data with comments included
+        serialized_post = PopulatedPostSerializer(post) # ! Return post data with comments & favourites included
         return Response(serialized_post.data, status.HTTP_200_OK)
     
     # PUT

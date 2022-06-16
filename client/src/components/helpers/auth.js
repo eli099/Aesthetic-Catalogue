@@ -1,3 +1,8 @@
+// ? Get the token from localStorage
+export const getTokenFromLocalStorage = () => {
+  return window.localStorage.getItem('aesthetic')
+}
+
 // ? Get payload from the token stored in localstorage
 export const getPayload = () => {
   const token = window.localStorage.getItem('aesthetic')

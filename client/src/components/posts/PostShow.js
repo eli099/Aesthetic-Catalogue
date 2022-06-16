@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 // Import params
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 // Import React Bootstrap
 import Container from 'react-bootstrap/Container'
@@ -12,8 +12,12 @@ import Image from 'react-bootstrap/Image'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/esm/Spinner'
+import { getPayload, getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/auth'
 
 const PostShow = () => {
+
+  // Navigate
+  const navigate = useNavigate()
 
   // Parameters from url
   const { id } = useParams()
@@ -38,8 +42,50 @@ const PostShow = () => {
     getPost()
   }, id)
 
+  // Funtion to delete post from database
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.delete(`/api/posts/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        },
+      })
+      console.log('data ->', data)
+      navigate('/posts')
+    } catch (error) {
+      console.log('error ->', error)
+    }
+  }
+
+  // Function to edit a post
+  const handleEdit = async (e) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.delete(`/api/posts/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        },
+      })
+      console.log('data ->', data)
+      navigate('/posts')
+    } catch (error) {
+      console.log('error ->', error)
+    }
+  }
+
+  // Check the logged in user is the owner
+  const userIsOwner = () => {
+    const payload = getPayload()
+    if (!payload) return
+    console.log('payload ->', payload)
+    console.log('post owner ->', post.owner)
+    return post.owner === payload.sub
+  }
+  userIsOwner()
+
   return (
-    <Container className="border">
+    <Container className="border mt-5">
       <Row>
         {post ?
           <>
@@ -63,7 +109,7 @@ const PostShow = () => {
               }
               <hr />
               {post.categories ?
-                <p>
+                <section>
                   <h6>Category:</h6>
                   {post.categories.map((cat) => {
                     const { id } = cat
@@ -72,7 +118,7 @@ const PostShow = () => {
                     )
                   })
                   }
-                </p>
+                </section>
                 :
                 <></>
               }
@@ -90,10 +136,17 @@ const PostShow = () => {
                 <></>
               }
               <hr />
-              <p>
-                <Button variant="primary">Edit</Button>
-                <Button variant="secondary">Delete</Button>
-              </p>
+              {userIsOwner() ?
+                <p>
+                  <Button variant="primary" as={Link} to={`/posts/${id}/edit`}>Edit</Button>
+                  <Button variant="secondary" onClick={handleDelete}>Delete</Button>
+                </p>
+                :
+                <>
+                </>
+              }
+              <p><Button variant="secondary" as={Link} to={'/posts/'}>Home</Button></p>
+
             </Col>
           </>
           :

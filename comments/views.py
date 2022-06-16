@@ -61,6 +61,6 @@ class CommentDetailView(APIView):
         if comment_to_delete.owner != request.user:
             print("Cannot delete record")
             raise PermissionDenied()
-        print("Can delet record")
-        # comment_to_delete.delete()
+        print("Can delete record")
+        comment_to_delete.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

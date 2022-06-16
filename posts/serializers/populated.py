@@ -10,6 +10,9 @@ from comments.serializers.populated import PopulatedCommentSerializer
 # Import CategorySerializer
 from categories.serializers.common import CategorySerializer
 
+# Import favourites serializer
+
+
 # Define populated serializer
 class PopulatedPostSerializer(PostSerializer):
     # Define field to populate

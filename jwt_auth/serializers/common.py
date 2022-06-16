@@ -4,6 +4,9 @@ from django.contrib.auth import get_user_model
 # User model
 User = get_user_model()
 
+# import ArrayField
+from django.contrib.postgres.fields import ArrayField
+
 # Import validation error for passwords
 from django.core.exceptions import ValidationError
 
@@ -34,4 +37,4 @@ class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = "__all__"
+        fields = '__all__'

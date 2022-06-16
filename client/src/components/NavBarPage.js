@@ -15,19 +15,29 @@ const NavBarPage = () => {
   // Navigate
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const getUser = () => {
+      const userString = window.localStorage.getItem('aesthetic-user')
+      const userJson = JSON.parse(userString)
+      console.log('logged in user details ->', userJson)
+    }
+    getUser()
+  },[])
+
   // Function to logout user
   const handleLogout = () => {
     // Remove token from local storage
     window.localStorage.removeItem('aesthetic')
+    window.localStorage.removeItem('aesthetic-user')
     // Navigate to the login page
-    navigate('/login')
+    navigate('/posts')
   }
 
   return (
     <>
       <Navbar bg="light" className="border-bottom" expand="sm">
         <Container>
-          <Navbar.Brand as={Link} to="/posts">Aesthetic</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">Aesthetic</Navbar.Brand>
           <Nav className="">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse>
@@ -35,6 +45,7 @@ const NavBarPage = () => {
                 <>
                   <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                   <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                  <Nav.Link as={Link} to="/posts/add">Add</Nav.Link>
                 </>
                 :
                 <>
