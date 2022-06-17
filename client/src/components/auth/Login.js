@@ -52,9 +52,8 @@ const Login = () => {
       console.log('response ->', data)
       setTokenToLocalStorage(data.token)
       saveUserProfile(data.user)
-      console.log('parsed user ->', JSON.parse(window.localStorage.getItem('aesthetic-user')
-      ))
-      // navigate('/posts')
+      console.log('parsed user ->', JSON.parse(window.localStorage.getItem('aesthetic-user')))
+      navigate('/')
     } catch (error) {
       console.log('error ->', error)
       console.log('error response ->', error.response)

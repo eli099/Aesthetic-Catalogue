@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
+import camelize from 'camelize'
+
 // Import params
 import { useParams, Link, useNavigate } from 'react-router-dom'
 
@@ -11,7 +13,12 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 import Spinner from 'react-bootstrap/esm/Spinner'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import Form from 'react-bootstrap/Form'
+
+// Auth
 import { getPayload, getTokenFromLocalStorage, userIsAuthenticated } from '../helpers/auth'
 
 const PostShow = () => {
@@ -26,6 +33,9 @@ const PostShow = () => {
   // Post state
   const [post, setPost] = useState(false)
 
+  // State to track comments
+  // const [comments, setComments] = useState([])
+
   // State to track error
   const [errors, setErrors] = useState(false)
 
@@ -33,8 +43,9 @@ const PostShow = () => {
     const getPost = async () => {
       try {
         const { data } = await axios.get(`/api/posts/${id}`)
-        console.log('data ->', data)
-        setPost(data)
+        const camelData = camelize(data)
+        console.log('camel data ->', camelData)
+        setPost(camelData)
       } catch (error) {
         console.log('error ->', error)
       }
@@ -58,21 +69,21 @@ const PostShow = () => {
     }
   }
 
-  // Function to edit a post
-  const handleEdit = async (e) => {
-    e.preventDefault()
-    try {
-      const { data } = await axios.delete(`/api/posts/${id}/`, {
-        headers: {
-          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
-        },
-      })
-      console.log('data ->', data)
-      navigate('/posts')
-    } catch (error) {
-      console.log('error ->', error)
-    }
-  }
+  // // Function to edit a post
+  // const handleDelete = async (e) => {
+  //   e.preventDefault()
+  //   try {
+  //     const { data } = await axios.delete(`/api/posts/${id}/`, {
+  //       headers: {
+  //         Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+  //       },
+  //     })
+  //     console.log('data ->', data)
+  //     navigate('/posts')
+  //   } catch (error) {
+  //     console.log('error ->', error)
+  //   }
+  // }
 
   // Check the logged in user is the owner
   const userIsOwner = () => {
@@ -84,8 +95,45 @@ const PostShow = () => {
   }
   userIsOwner()
 
+  const [commentData, setCommentData] = useState({
+    text: '',
+    post: `${id}`,
+  })
+
+  // Update comment formdata
+  const handleChange = (e) => {
+    setCommentData({ ...commentData, text: e.target.value })
+    console.log('comment data ->', commentData)
+  }
+
+  // Function to add comments to post
+  const handleComment = async (e) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.post('/api/comments/', commentData, {
+        headers: {
+          Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+        },
+      })
+      console.log('comment request data ->', data)
+      navigate(`/posts/${id}`)
+    } catch (error) {
+      console.log('error ->', error.response)
+    }
+  }
+
+  // get payload sub
+  const getSub = () => {
+    const payload = getPayload()
+    if (!payload) return
+    console.log('payload ->', payload)
+    return post.owner === payload.sub
+  }
+
+  console.log('sub --->', getPayload().sub)
+
   return (
-    <Container className="border mt-5">
+    <Container className="border mt-5 shadow">
       <Row>
         {post ?
           <>
@@ -93,7 +141,7 @@ const PostShow = () => {
               <Image fluid="true" src={post.image} />
               {/* <img src={post.image} alt={post.title} /> */}
             </Col>
-            <Col md="6" className="p-2">
+            <Col md="6" className="p-4 border-start">
               <h5>{post.title}({post.year}), {post.artist}</h5>
               <hr />
               {post.description ?
@@ -147,6 +195,46 @@ const PostShow = () => {
               }
               <p><Button variant="secondary" as={Link} to={'/posts/'}>Home</Button></p>
 
+              {/* Comments */}
+              {post.comments.map((item, i) => {
+                const sub = getPayload().sub
+                const time = new Date(item.createdAt)
+                const { id, text, owner } = item
+                return (
+                  <Card key={i} className="comments mt-2 rounded-0 shadow-sm">
+                    <Card.Header>
+                      <ButtonGroup>
+                        <span className="pe-2 ps-2 border-end bg-info bg-opacity-10">@</span> <span className="pe-2 ps-2 border border-start-0 rounded-end fs-6">{owner.username}</span>
+                      </ButtonGroup>
+                      {/* <span className="pe-2 ps-2 fw-lighter fs-6">at</span> */}
+                      <ButtonGroup>
+                        <span className="badge bg-none text-muted fs-6 fw-lighter border border-1 p-1 ms-2">{time.toUTCString()}</span>
+                      </ButtonGroup>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text>
+                        {text}
+                      </Card.Text>
+                    </Card.Body>
+                    {sub === owner.id ?
+                      <Card.Footer className="p-1 bg-white">
+                        <Badge type="submit" className="bg-danger text-muted border-0 bg-opacity-50 float-end">Delete</Badge>
+                      </Card.Footer>
+                      :
+                      <></>
+                    }
+                  </Card>
+                )
+              })}
+              {/* Add comment */}
+              <Card className="comments m-2 rounded-0 shadow-sm p-1">
+                <Form className="m-1 rounded-0 pe-1" onSubmit={handleComment}>
+                  <Form.Group>
+                    <Form.Control className="m-1 rounded-0 p-1" as="textarea" rows={3} value={commentData.text} onChange={handleChange} />
+                  </Form.Group>
+                  <Button type="submit" className="bg-opacity-50 bg-info border-0 rounded-1 ms-1 m-2">Post</Button>
+                </Form>
+              </Card>
             </Col>
           </>
           :
@@ -160,7 +248,7 @@ const PostShow = () => {
           </h5>
         }
       </Row>
-    </Container>
+    </Container >
   )
 }
 

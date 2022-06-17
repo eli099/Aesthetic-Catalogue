@@ -16,5 +16,5 @@ class User(AbstractUser):
     profile_pic = models.URLField(default="https://cdn-icons-png.flaticon.com/512/1160/1160283.png")
     favourites = models.ManyToManyField(
         'posts.Post',
-        related_name = 'users_favourited'
+        related_name = 'favourited_by'
     )

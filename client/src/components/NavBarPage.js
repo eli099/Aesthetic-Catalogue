@@ -22,7 +22,7 @@ const NavBarPage = () => {
       console.log('logged in user details ->', userJson)
     }
     getUser()
-  },[])
+  }, [])
 
   // Function to logout user
   const handleLogout = () => {
@@ -37,15 +37,18 @@ const NavBarPage = () => {
     <>
       <Navbar bg="light" className="border-bottom" expand="sm">
         <Container>
-          <Navbar.Brand as={Link} to="/">Aesthetic</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">
+            <img src="https://i.postimg.cc/TPh2cvKb/aesthetic-logo.png" width="40" className="me-3" alt="Aesthetic Catalogue Logo" />
+            Aesthetic
+          </Navbar.Brand>
           <Nav className="">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse>
               {userIsAuthenticated() ?
                 <>
                   <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                  <Nav.Link as={Link} to="/posts/add">Add</Nav.Link>
+                  <Nav.Link as={Link} to="/posts/add">Add Post</Nav.Link>
+                  <Nav.Link className="badge rounded-pill text-bg-info p-3 border bg-white" as={Link} to="/profile">Profile</Nav.Link>
                 </>
                 :
                 <>

@@ -109,32 +109,33 @@ class PostDetailView(APIView):
         serialized_post = PostSerializer(post)
         return Response(status.HTTP_204_NO_CONTENT)
     
-# class AddFavouriteView(APIView):    
-#     # ? Add Post to user's favourites
+class AddFavouriteView(APIView):    
+    # ? Add Post to user's favourites
     
-#     # ? Custom Function
-#     # Description: find specific post based on it's pk. If it's not there then throw an error
-#     def get_post(self, pk):
-#         try:
-#             return Post.objects.get(pk=pk) # Find post where its pk is the same as the pk in the request endpoint
-#         except Post.DoesNotExist as e:
-#             print(e)
-#             raise NotFound({ 'detail': str(e) })
+    # ? Custom Function
+    # Description: find specific post based on it's pk. If it's not there then throw an error
+    def get_post(self, pk):
+        try:
+            return Post.objects.get(pk=pk) # Find post where its pk is the same as the pk in the request endpoint
+        except Post.DoesNotExist as e:
+            print(e)
+            raise NotFound({ 'detail': str(e) })
     
     # # PUT
     # # Description: Push post details to user's favourites array
     # def put(self, request, pk):
     #     post = self.get_post(pk) # Find post information in database
-        
-    #     print("post to add ->", post)
+    #     print('normal post ->', post.id)
     #     print('get user ->', request.user.bio)
     #     # Find user
     #     user = User.objects.get(email=request.user.email)
-    #     serialized_user = UserSerializer(user)
-    #     print('user to add fav ->', serialized_user)
+    #     # serialized_user = UserSerializer(user)
+    #     # print('user to add fav ->', serialized_user)
     #     # Serialize post
-    #     serialized_post = PostSerializer(post, pk)
+    #     serialized_post = PostSerializer(post)
+    #     print('serialized post ->', serialized_post)
     #     # Push post to user favourites array
-    #     print('users favourites ->', serialized_user.data)
-    #     serialized_user.data.favourites.append(serialized_post)
-    #     return Response(serialized_user.data)
+    #     # print('users favourites ->', user.data)
+    #     user.favourites.append(post.id)
+    #     print('user data ->', user)
+    #     return Response(status.HTTP_200_OK)
