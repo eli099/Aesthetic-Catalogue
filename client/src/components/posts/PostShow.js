@@ -39,6 +39,8 @@ const PostShow = () => {
   // State to track error
   const [errors, setErrors] = useState(false)
 
+  const [ checkComment, setCheckComment ] = useState(false)
+
   useEffect(() => {
     const getPost = async () => {
       try {
@@ -52,7 +54,7 @@ const PostShow = () => {
       }
     }
     getPost()
-  }, id)
+  }, [id, checkComment])
 
   // Funtion to delete post from database
   const handleDelete = async (e) => {
@@ -63,6 +65,7 @@ const PostShow = () => {
           Authorization: `Bearer ${getTokenFromLocalStorage()}`,
         },
       })
+      
       console.log('data ->', data)
       navigate('/posts')
     } catch (error) {
@@ -101,6 +104,8 @@ const PostShow = () => {
     post: `${id}`,
   })
 
+  
+
   // Update comment formdata
   const handleChange = (e) => {
     setCommentData({ ...commentData, text: e.target.value })
@@ -109,6 +114,7 @@ const PostShow = () => {
 
   // Function to add comments to post
   const handleComment = async (e) => {
+    setCheckComment(false)
     e.preventDefault()
     try {
       const { data } = await axios.post('/api/comments/', commentData, {
@@ -117,7 +123,9 @@ const PostShow = () => {
         },
       })
       console.log('comment request data ->', data)
-      navigate(`/posts/${id}`)
+      setCheckComment(true)
+      // location.reload()
+      // navigate(`/posts/${id}/`)
     } catch (error) {
       console.log('error ->', error.response)
     }
@@ -131,11 +139,12 @@ const PostShow = () => {
     return post.owner === payload.sub
   }
 
-  console.log('sub --->', getPayload().sub)
+  // console.log('sub --->', getPayload().sub)
 
   const handleCommentDelete = async (commentId) => {
 
     // console.log('commentId ->', commentId)
+    setCheckComment(false)
 
     try {
       const { data } = await axios.delete(`/api/comments/${commentId}/`, {
@@ -144,7 +153,7 @@ const PostShow = () => {
         },
       })
       console.log('comment request data ->', data)
-      navigate(`/posts/${id}`)
+      setCheckComment(true)
     } catch (error) {
       console.log('error ->', error.response)
     }
@@ -263,7 +272,7 @@ const PostShow = () => {
                       </Card.Body>
                       {sub === owner.id ?
                         <Card.Footer className="p-1 bg-white">
-                          <Badge onClick={() => handleCommentDelete(id)} className="bg-danger text-muted border-0 bg-opacity-50 float-end">Delete</Badge>
+                          <Badge onClick={() => handleCommentDelete(id)} className="delete-comment bg-danger text-muted border-0 bg-opacity-50 float-end">Delete</Badge>
                         </Card.Footer>
                         :
                         <></>
