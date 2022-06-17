@@ -6,6 +6,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 // Import Auth helpers
 import { getPayload, userIsAuthenticated } from './helpers/auth'
@@ -30,25 +31,33 @@ const NavBarPage = () => {
     window.localStorage.removeItem('aesthetic')
     window.localStorage.removeItem('aesthetic-user')
     // Navigate to the login page
-    navigate('/posts')
+    navigate('/')
   }
 
   return (
     <>
-      <Navbar bg="light" className="border-bottom" expand="sm">
+      <Navbar collapseOnSelect fixed="" bg="light" className="border-bottom" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/">
             <img src="https://i.postimg.cc/TPh2cvKb/aesthetic-logo.png" width="40" className="me-3" alt="Aesthetic Catalogue Logo" />
-            Aesthetic
+            
           </Navbar.Brand>
           <Nav className="">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse>
               {userIsAuthenticated() ?
                 <>
-                  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-                  <Nav.Link as={Link} to="/posts/add">Add Post</Nav.Link>
-                  <Nav.Link className="badge rounded-pill text-bg-info p-3 border bg-white" as={Link} to="/profile">Profile</Nav.Link>
+                  <NavDropdown title="Profile" className="badge rounded-pill text-bg-info ps-2 pe-2 pt-1 pb-1 m-2 border bg-white fs-6 fw-normal">
+                    <NavDropdown.Item>
+                      <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <Nav.Link as={Link} to="/posts/add">Add Post</Nav.Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="bg-info bg-opacity-25 border-top">
+                      <Nav.Link className="" as={Link} to="/profile">View Profile</Nav.Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
                 </>
                 :
                 <>

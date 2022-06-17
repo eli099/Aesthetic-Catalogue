@@ -1,0 +1,22 @@
+
+.comments-title {
+  margin:10px 10px 20px 0px;
+  // border-bottom: 5px solid rgba(0,0,0,0.1);
+  padding: 20px 20px 10px 0px;
+  span {
+    background-color: rgba(81, 85, 167, 0.2);
+    padding:10px 30px 10px 30px;
+  }
+}
+
+h6 {
+  margin-bottom: 30px;
+  span {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding:10px 30px 10px 30px;
+    margin-bottom: 30px;
+  }
+  p {
+    margin-bottom: 300px;
+  }
+}

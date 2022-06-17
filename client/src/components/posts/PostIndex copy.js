@@ -29,10 +29,11 @@ const Test = () => {
 
   const [filters, setFilters] = useState({
     searchTerm: '',
+    categories: 'All',
   })
 
   // Dropdowns states
-  const [artists, setArtists] = useState([])
+  // const [artists, setArtists] = useState([])
 
   const [categories, setCategories] = useState([])
 
@@ -54,6 +55,23 @@ const Test = () => {
     getData()
   }, [])
 
+  // useEffect that creates dropdown options
+  useEffect(() => {
+    if (posts.length) {
+      const categoriesList = []
+      const finalList = []
+      // posts.categories.forEach((post) => categoriesList.includes(post.name) ? '' : categoriesList.push(post.name))
+      console.log('posts.categories', posts.forEach((post) => {
+        categoriesList.push(post.categories[0])
+        // console.log('one post category ->', post.categories)
+      }))
+      console.log('categories list ->', categoriesList)
+      categoriesList.forEach((cat) => finalList.includes(cat.name) ? '' : finalList.push(cat.name))
+      console.log('final list --->', finalList)
+      setCategories(finalList)
+    }
+  }, [posts])
+
   // handle change for search and filter
   const handleChange = (e) => {
     console.log(e.target.name, e.target.value)
@@ -67,7 +85,7 @@ const Test = () => {
       const regexSearch = new RegExp(filters.searchTerm, 'i')
       console.log(regexSearch)
       const filtered = posts.filter(post => {
-        return (regexSearch.test(post.title) || regexSearch.test(post.artist) || regexSearch.test(post.description))
+        return (regexSearch.test(post.title) || regexSearch.test(post.artist) || regexSearch.test(post.description) && (post.categories === filters.categories || filters.categories === 'All'))
       })
       setFilteredPosts(filtered)
       console.log('filtered posts ->', filteredPosts)
@@ -93,7 +111,9 @@ const Test = () => {
             }
 
             {source ?
-              <a href={source} target="_blank" rel="noreferrer">Source</a>
+              <Badge className="badge rounded-pill text-bg-success border bg-white">
+                <a href={source} target="_blank" rel="noreferrer">Source</a>
+              </Badge>
               :
               <></>
             }
@@ -106,7 +126,7 @@ const Test = () => {
                 const { id, name } = cat
                 return (
                   <>
-                    <Link key={id} to={'/posts'}><Badge bg="primary" className="m-1">{cat.name}</Badge></Link><br />
+                    <Link key={id} to={'/posts'}><Badge bg="primary" className="m-1 bg-opacity-75">{cat.name}</Badge></Link><br />
                   </>
                 )
               })}
@@ -120,7 +140,7 @@ const Test = () => {
             <>
               {tags.map((tag, i) => {
                 return (
-                  <Link key={i} to={'/posts'}><Badge pill bg="secondary" className="m-1 fw-light">{tag}</Badge></Link>
+                  <Link key={i} to={'/'}><Badge pill bg="secondary" className="m-1 fw-light bg-opacity-75">{tag}</Badge></Link>
                 )
               })
               }
@@ -155,11 +175,14 @@ const Test = () => {
             {/* Dropdown one */}
             <Col lg="4">
               <Form.Group className="">
-                <Form.Select name="artist" value={filters.categories} aria-label="artist select" onChange={handleChange}>
+              
+                <Form.Select name="artist" value={filters.categories} aria-label="categories select" onChange={handleChange}>
                   <option value="all">All</option>
-                  {artists.map((artist) => {
-                    // console.log('test', artist)
-                    return <option value={artist} key={artist}>{artist}</option>
+                  {categories.map((cat, i) => {
+                    console.log('test', cat)
+                    return (
+                      <option value={cat} key={i}>{cat}</option>
+                    )
                   })}
                 </Form.Select>
               </Form.Group>
