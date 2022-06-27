@@ -10,6 +10,7 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/esm/Col'
 import Row from 'react-bootstrap/esm/Row'
 import Card from 'react-bootstrap/Card'
+import Stack from 'react-bootstrap/Stack'
 
 // Import react navigation
 import { Navigate, useNavigate } from 'react-router-dom'
@@ -67,36 +68,32 @@ const Login = () => {
   }
 
   return (
-    <Container className="border p-4 mt-5" lg="6">
-      <Col md="4" lg={{ order: 'first' }}>
-        
-      </Col>
-
-      <Col md="12" lg>
-        <Card className="p-4">
-          <Form onSubmit={handleSubmit} className="">
-            <Form.Group className="mb-3">
-              <FloatingLabel controlId="floatingInput" label="Email">
-                <Form.Control name="email" type="email" placeholder="Email" onChange={handleChange} />
-              </FloatingLabel>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <FloatingLabel controlId="floatingInput" label="Password">
-                <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange} />
-                {errors && <Form.Text className="text-info">Unauthorised</Form.Text>}
-              </FloatingLabel>
-            </Form.Group>
-            <Button type="submit">
-              Login
-            </Button>
-          </Form>
-        </Card>
-      </Col>
-      <Col md="4" xs={{ order: 'last' }}>
-       
-      </Col>
-
-    </Container>
+    <div className="auth-page">
+      <Container className="p-4 mt-5" lg="6">
+        <Row className="">
+          <Col md="4" lg={{ span: 6, offset: 3 }}>
+            <Card className="p-4 rounded-0 shadow">
+              <Form onSubmit={handleSubmit} className="">
+                <Form.Group className="mb-3">
+                  <FloatingLabel controlId="floatingInput" label="Email">
+                    <Form.Control name="email" type="email" placeholder="Email" onChange={handleChange} />
+                  </FloatingLabel>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <FloatingLabel controlId="floatingInput" label="Password">
+                    <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange} />
+                    {errors && <Form.Text className="text-info">Unauthorised</Form.Text>}
+                  </FloatingLabel>
+                </Form.Group>
+                <Button type="submit" className="bg-success bg-opacity-100 border-0">
+                  Login
+                </Button>
+              </Form>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   )
 }
 

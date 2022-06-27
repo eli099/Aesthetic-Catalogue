@@ -39,7 +39,7 @@ const PostShow = () => {
   // State to track error
   const [errors, setErrors] = useState(false)
 
-  const [ checkComment, setCheckComment ] = useState(false)
+  const [checkComment, setCheckComment] = useState(false)
 
   useEffect(() => {
     const getPost = async () => {
@@ -65,9 +65,9 @@ const PostShow = () => {
           Authorization: `Bearer ${getTokenFromLocalStorage()}`,
         },
       })
-      
+
       console.log('data ->', data)
-      navigate('/posts')
+      navigate('/')
     } catch (error) {
       console.log('error ->', error)
     }
@@ -104,7 +104,7 @@ const PostShow = () => {
     post: `${id}`,
   })
 
-  
+
 
   // Update comment formdata
   const handleChange = (e) => {
@@ -124,8 +124,7 @@ const PostShow = () => {
       })
       console.log('comment request data ->', data)
       setCheckComment(true)
-      // location.reload()
-      // navigate(`/posts/${id}/`)
+      setCommentData({ ...commentData, text: '', post: '' })
     } catch (error) {
       console.log('error ->', error.response)
     }
@@ -170,7 +169,9 @@ const PostShow = () => {
             </Col>
             <Col md="6" className="p-0 border-none">
               <Card className="border p-4 mb-3 rounded-0">
-                <h5>{post.title}({post.year})</h5>
+                <h5>{post.title}
+                  {post.year && <> ({post.year})</>}
+                </h5>
                 {post.artist}<br />
                 <hr />
                 {post.description ?
@@ -251,7 +252,7 @@ const PostShow = () => {
                 <h5 className="comments-title"><span className="bg-secondary bg-opacity-25">Comments</span></h5>
 
                 {post.comments.map((item, i) => {
-                  const sub = getPayload().sub
+                  // const sub = getPayload().sub
                   const time = new Date(item.createdAt)
                   const { id, text, owner } = item
                   return (
@@ -270,12 +271,16 @@ const PostShow = () => {
                           {text}
                         </Card.Text>
                       </Card.Body>
-                      {sub === owner.id ?
-                        <Card.Footer className="p-1 bg-white">
-                          <Badge onClick={() => handleCommentDelete(id)} className="delete-comment bg-danger text-muted border-0 bg-opacity-50 float-end">Delete</Badge>
-                        </Card.Footer>
-                        :
-                        <></>
+                      {getPayload() &&
+                        <>
+                          {getPayload().sub === owner.id ?
+                            <Card.Footer className="p-1 bg-white">
+                              <Badge onClick={() => handleCommentDelete(id)} className="delete-comment bg-danger text-muted border-0 bg-opacity-50 float-end">Delete</Badge>
+                            </Card.Footer>
+                            :
+                            <></>
+                          }
+                        </>
                       }
                     </Card>
                   )

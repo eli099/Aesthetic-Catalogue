@@ -44,7 +44,7 @@ const Test = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/posts/') // * <-- replace with your endpoint
+        const { data } = await axios.get('/api/posts/')
         setPosts(data)
         console.log(data)
       } catch (error) {
@@ -92,6 +92,7 @@ const Test = () => {
     }
   }, [filters, posts])
 
+  // Masonry content
   const items = filteredPosts.map((post) => {
     console.log(post)
     const { id, artist, description, categories, image, source, tags, title, year } = post
@@ -102,52 +103,42 @@ const Test = () => {
           <Card.Img src={image} className="rounded-0" />
         </Link>
         <Card.Body className="p-3">
-          <Card.Title>{title}{year ? `(${year})` : <></>}, {artist}</Card.Title>
+
+          <Card.Title className="fw-normal text-muted">
+            {title} {year ? `(${year})` : <></>}
+            <span className="border-start border-success border-opacity-50 ps-2 ms-2 text-muted">{artist}</span><br />
+          </Card.Title>
+
           <Card.Text>
-            {description ?
-              <>{description}<br /></>
+            {categories.length ?
+              <>
+                {categories.map((cat) => {
+                  const { id, name } = cat
+                  return (
+                    <>
+                      <Link key={id} to={'/posts'}><Badge bg="primary" className="m-1 bg-opacity-75">{cat.name}</Badge></Link><br />
+                    </>
+                  )
+                })}
+
+              </>
               :
               <></>
             }
-
-            {source ?
-              <Badge className="badge rounded-pill text-bg-success border bg-white">
-                <a href={source} target="_blank" rel="noreferrer">Source</a>
-              </Badge>
+            <hr className="border-success m-1" />
+            {tags ?
+              <>
+                {tags.map((tag, i) => {
+                  return (
+                    <Link key={i} to={'/'}><Badge pill bg="secondary" className="m-1 fw-light bg-opacity-75">{tag}</Badge></Link>
+                  )
+                })
+                }
+              </>
               :
               <></>
             }
-            <br />
-
           </Card.Text>
-          {categories.length ?
-            <>
-              {categories.map((cat) => {
-                const { id, name } = cat
-                return (
-                  <>
-                    <Link key={id} to={'/posts'}><Badge bg="primary" className="m-1 bg-opacity-75">{cat.name}</Badge></Link><br />
-                  </>
-                )
-              })}
-
-            </>
-            :
-            <></>
-          }
-          <hr className="border-success m-1" />
-          {tags ?
-            <>
-              {tags.map((tag, i) => {
-                return (
-                  <Link key={i} to={'/'}><Badge pill bg="secondary" className="m-1 fw-light bg-opacity-75">{tag}</Badge></Link>
-                )
-              })
-              }
-            </>
-            :
-            <></>
-          }
         </Card.Body>
       </Card>
 
@@ -165,17 +156,17 @@ const Test = () => {
     <>
       <Container className="mt-5 search">
         {/* Filter dropdown and Searchbar */}
-        <Form className="border p-3 shadow-sm">
+        <Form className="border ps-4 pe-4 pt-2 pb-2 shadow-sm">
           <Row>
-            <Col lg="8">
+            <Col lg="8" className="p-1">
               <Form.Group className="">
                 <FormControl type="search" name="searchTerm" value={filters.searchTerm} placeholder="Search..." onChange={handleChange} />
               </Form.Group>
             </Col>
             {/* Dropdown one */}
-            <Col lg="4">
+            <Col lg="4" className="p-1">
               <Form.Group className="">
-              
+
                 <Form.Select name="artist" value={filters.categories} aria-label="categories select" onChange={handleChange}>
                   <option value="all">All</option>
                   {categories.map((cat, i) => {
