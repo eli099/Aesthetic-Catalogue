@@ -25,7 +25,7 @@ const App = () => {
         <NavBarPage />
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/posts" element={<PostIndex />} />
+          {/* <Route path="/posts" element={<PostIndex />} /> */}
           <Route path="/posts/:id" element={<PostShow />} />
           {/* Auth routes */}
           <Route path="/posts/add" element={<PostAdd />} />

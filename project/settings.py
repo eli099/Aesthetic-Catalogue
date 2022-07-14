@@ -15,6 +15,10 @@ from pathlib import Path
 # ! To create .env file
 import environ
 
+import os
+
+import django_on_heroku
+
 # Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
@@ -65,7 +69,9 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'client')
+                 ]  #Look, we have added the root folder of frontend here
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,3 +152,10 @@ REST_FRAMEWORK = {
         'jwt_auth.authentication.JWTAuthentication'
     ]
 }
+
+# ?
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'client', "build", "static"),
+)
+
+django_on_heroku.settings(locals())

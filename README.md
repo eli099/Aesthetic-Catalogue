@@ -28,6 +28,7 @@ Users can register and log in to enable them to add, delete and edit posts throu
 - Bootstrap
 - React Masonry CSS
 - PyJWT
+- camelize
 
 ### Installation steps
 

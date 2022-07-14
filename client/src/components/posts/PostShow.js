@@ -44,7 +44,7 @@ const PostShow = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const { data } = await axios.get(`/api/posts/${id}`)
+        const { data } = await axios.get(`/api/posts/${id}/`)
         const camelData = camelize(data)
         console.log('camel data ->', camelData)
 
@@ -199,7 +199,7 @@ const PostShow = () => {
                           {post.categories.map((cat) => {
                             const { id } = cat
                             return (
-                              <Link key={id} to={'/posts'}><Badge className="m-1">{cat.name}</Badge></Link>
+                              <Link key={id} to={'/'}><Badge className="m-1">{cat.name}</Badge></Link>
                             )
                           })
                           }
@@ -216,7 +216,7 @@ const PostShow = () => {
                           <Card.Title>Tags</Card.Title>
                           {post.tags.map((tag, i) => {
                             return (
-                              <Link key={i} to={'/posts'}><Badge className="m-1">{tag}</Badge></Link>
+                              <Link key={i} to={'/'}><Badge className="m-1">{tag}</Badge></Link>
                             )
                           })
                           }
