@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+# Deploying
+import os
+
+import django_on_heroku
+
 # ! To create .env file
 import environ
 
@@ -154,7 +159,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-# ?
+# To deploy
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'client', "build", "static"),
 )
