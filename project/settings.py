@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'posts',
     'comments',
     'categories',
+    'django-environ',
 ]
 
 MIDDLEWARE = [
