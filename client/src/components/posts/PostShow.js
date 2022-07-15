@@ -44,7 +44,7 @@ const PostShow = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const { data } = await axios.get(`/api/posts/${id}`)
+        const { data } = await axios.get(`/api/posts/${id}/`)
         const camelData = camelize(data)
         console.log('camel data ->', camelData)
 
