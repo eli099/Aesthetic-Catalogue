@@ -11,6 +11,7 @@ autopep8 = "*"
 djangorestframework = "*"
 pyjwt = "*"
 django-on-heroku = "*"
+python-environ = "*"
 
 [dev-packages]
 
