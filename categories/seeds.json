@@ -89,5 +89,47 @@
   "fields": {
     "name": "Acidgrafix"
   }
+},
+{
+  "model": "categories.category",
+  "pk": 14,
+  "fields": {
+    "name": "Bubblegum Bling"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 15,
+  "fields": {
+    "name": "Corporate Gen-X Cyber"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 16,
+  "fields": {
+    "name": "Teenpunk"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 17,
+  "fields": {
+    "name": "Nouveau Organic"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 18,
+  "fields": {
+    "name": "Ultramodern Revival"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 19,
+  "fields": {
+    "name": "Metalheart"
+  }
 }
 ]

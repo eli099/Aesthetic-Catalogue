@@ -10,6 +10,7 @@
     "source": "https://avtavr.tumblr.com/post/99963040857/nox-architecture-by-lars-spuybroek-h20",
     "year": 1998,
     "tags": "[\"y2k\", \"architecture\", \"blue\"]",
+    "owner": 1,
     "categories": [
       1
     ]
@@ -26,6 +27,7 @@
     "source": "https://m.weibo.cn/detail/4683165609756268",
     "year": 2000,
     "tags": "[\"gen-x soft club\", \"editorial\", \"ethereal\"]",
+    "owner": 1,
     "categories": [
       6
     ]
@@ -42,40 +44,9 @@
     "source": "https://www.pinterest.co.uk/residenteviI2/",
     "year": 1999,
     "tags": "[\"gen-x soft club\"]",
+    "owner": 1,
     "categories": [
       6
-    ]
-  }
-},
-{
-  "model": "posts.post",
-  "pk": 15,
-  "fields": {
-    "image": "https://blog.matfloor.net/wp-content/uploads/2021/05/grounthwaite3-791x1024.jpg",
-    "title": "Levi's SilverTab advertising campaign",
-    "description": "",
-    "artist": "Graham Rounthwaite",
-    "source": "https://blog.matfloor.net/2021/08/23/pen-and-mouse-book-addendum/",
-    "year": 1998,
-    "tags": "[\"gen-x soft club\"]",
-    "categories": [
-      6
-    ]
-  }
-},
-{
-  "model": "posts.post",
-  "pk": 17,
-  "fields": {
-    "image": "https://blog.matfloor.net/wp-content/uploads/2021/08/faiyazjafri2-1024x738.jpg",
-    "title": "Napster",
-    "description": "Commissioned by Spin magazine",
-    "artist": "Kam Tang",
-    "source": "https://blog.matfloor.net/2021/08/23/pen-and-mouse-book-addendum/",
-    "year": null,
-    "tags": "[]",
-    "categories": [
-      1
     ]
   }
 },
@@ -90,8 +61,281 @@
     "source": "https://www.discogs.com/release/7765914-%E7%8C%AB-%E3%82%B7-Corp-%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%AD%E3%83%BC%E3%82%92%E6%8A%BC%E3%81%97",
     "year": 2013,
     "tags": "[\"music\", \"musician\"]",
+    "owner": 1,
     "categories": [
       2
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 21,
+  "fields": {
+    "image": "https://i.pinimg.com/564x/f3/96/b5/f396b5a6f812d7ec3b34f5fb73f11a61.jpg",
+    "title": "Turn Back Time",
+    "description": "Dreamlike artwork inspired by 80s / 90s aesthetic nostalgia fueled by synthwave retrowave and vaporwave style.",
+    "artist": "Denny Busyet",
+    "source": "https://dennybusyet.com/",
+    "year": null,
+    "tags": "[\"colourful\", \"3d\"]",
+    "owner": 1,
+    "categories": [
+      2
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 22,
+  "fields": {
+    "image": "https://i.pinimg.com/564x/7d/06/c7/7d06c774d2a21a7d24fb76889ae5e597.jpg",
+    "title": "‘Neo Geo Pocket Color’ ad",
+    "description": "",
+    "artist": "Unknown",
+    "source": "https://y2kaestheticinstitute.tumblr.com/post/143394297445/neo-geo-pocket-color-ad-1999",
+    "year": 1999,
+    "tags": "[\"ad\"]",
+    "owner": 1,
+    "categories": [
+      1
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 23,
+  "fields": {
+    "image": "https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIxNDQ1NjUyNC9vcmlnaW5hbF9kNjhkMWMxMDA5YTYzYjk1YTVhZjI4OGVkMWIxM2I2Zi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo5MH0sImpwZWciOnsicXVhbGl0eSI6OTB9LCJyb3RhdGUiOm51bGx9fQ==?bc=0",
+    "title": "Bedframe from the D'Alba Residence",
+    "description": "",
+    "artist": "Jordan Mozer",
+    "source": "http://www.jordanmozer.com/residential-glencoe-1",
+    "year": null,
+    "tags": "[\"1996\"]",
+    "owner": 1,
+    "categories": [
+      17
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 26,
+  "fields": {
+    "image": "https://images.squarespace-cdn.com/content/v1/57e1946a197aea20e2a66814/1504701875121-4L1NUXDXSKMFTF5X7QFC/02_high_Res_web.jpg?format=1500w",
+    "title": "Klein",
+    "description": "",
+    "artist": "Hannah Diamond",
+    "source": "http://studio.hannahdiamond.com/#/klein/",
+    "year": 2018,
+    "tags": "[\"pink\", \"fashion\", \"musician\"]",
+    "owner": 1,
+    "categories": [
+      3
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 27,
+  "fields": {
+    "image": "https://images.squarespace-cdn.com/content/v1/57e1946a197aea20e2a66814/1625427543478-J0DYQU1EV8LBYL6E76UQ/HD_KILLME_01_COLOURGRADE07_2000px.jpeg?format=1500w",
+    "title": "Kill Me Single",
+    "description": "Sundara Karma",
+    "artist": "Hannah Diamond",
+    "source": "http://studio.hannahdiamond.com/#/sundara-karma-kill-me-single/",
+    "year": null,
+    "tags": "[\"musician\"]",
+    "owner": 1,
+    "categories": [
+      3
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 28,
+  "fields": {
+    "image": "https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIxMzAwNjczNS9vcmlnaW5hbF9kZmYzZDI1NWE5ZjI0NmMxYjlhNWFiZmFjN2QyNWE4Yi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo5MH0sImpwZWciOnsicXVhbGl0eSI6OTB9LCJyb3RhdGUiOm51bGx9fQ==?bc=0",
+    "title": "Metahaven",
+    "description": "Platform",
+    "artist": "Holly Herndon",
+    "source": "https://cari.institute/aesthetics/acidgrafix",
+    "year": null,
+    "tags": "[\"musician\", \"lp\"]",
+    "owner": 8,
+    "categories": [
+      13
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 30,
+  "fields": {
+    "image": "http://davidrudnick.org/wp-content/uploads/2015/12/CopaChristi_Insta.png",
+    "title": "Evian Christ / Copa Sudamerica",
+    "description": "",
+    "artist": "David Rudnick",
+    "source": "http://davidrudnick.org/3517/evian-christ-copa-sudamerica/",
+    "year": 2015,
+    "tags": "[\"poster\", \"musician\"]",
+    "owner": 1,
+    "categories": [
+      13
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 31,
+  "fields": {
+    "image": "https://stack-magazines.imgix.net/uploads/Ray-Gun-hair.jpg?auto=compress%2Cformat&ixlib=php-3.3.0&s=1e0b35f675360ba81fe82f7eabe189d3",
+    "title": "Ray Gun: The Bible of Music and Style",
+    "description": "This exclusive volume presents the best features and radically designed pages of the 1990’s most uncompromising document of alternative music, style, and pop culture.",
+    "artist": "Author Marvin Scott Jarrett, Contributions by Liz Phair and Wayne Coyne and Dean Kuipers and Steven Heller",
+    "source": "https://www.stackmagazines.com/art-design/magazines-were-magical-to-me/",
+    "year": 2019,
+    "tags": "[\"magazine\", \"editorial\", \"black and white\", \"publication\"]",
+    "owner": 1,
+    "categories": [
+      8
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 32,
+  "fields": {
+    "image": "https://cdn.dribbble.com/users/688695/screenshots/15657257/media/08ee697fb2c6c82ab0cda220fbcf784a.jpg?compress=1&resize=1000x750&vertical=top",
+    "title": "Alebrijes NVIDIA STUDIO Challenge",
+    "description": "Havin' some fun with the Alebrijes. Let's go!",
+    "artist": "Matt Romo",
+    "source": "https://dribbble.com/shots/15657257-Alebrijes-NVIDIA-STUDIO-Challenge",
+    "year": null,
+    "tags": "[\"pink\", \"black\"]",
+    "owner": 8,
+    "categories": [
+      13
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 33,
+  "fields": {
+    "image": "https://64.media.tumblr.com/e5b721c300045b588281ad9733cda95b/tumblr_pisaiobtg11tern65o1_1280.jpg",
+    "title": "Unknown",
+    "description": "Shirt design for FNMNL. http://fnmnl.tv/",
+    "artist": "Yuta Kawaguchi",
+    "source": "https://archivocerocinco.tumblr.com/post/180507070067/ykwgcgraphic-shirt-design-for-fnmnl",
+    "year": null,
+    "tags": "[\"black\", \"chrome\"]",
+    "owner": 8,
+    "categories": [
+      13
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 34,
+  "fields": {
+    "image": "http://yutakawaguchi.com/assets/images/works/202.jpg",
+    "title": "poster design for Google Pixel",
+    "description": "",
+    "artist": "Yuta Kawaguchi",
+    "source": "http://yutakawaguchi.com/works/",
+    "year": null,
+    "tags": "[\"poster\"]",
+    "owner": 8,
+    "categories": [
+      13
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 35,
+  "fields": {
+    "image": "https://images.squarespace-cdn.com/content/v1/6012d3b3ce7bb826ec2f0270/6bef45d9-0d0f-4fe7-b106-0adeb1a9838f/ReadersDigest.png?format=1500w",
+    "title": "Reader’s Digest",
+    "description": "For the June 2021 issue of Reader’s Digest.",
+    "artist": "Ally Jaye Reeves",
+    "source": "https://www.allyjaye.com/work/readers-digest",
+    "year": 2021,
+    "tags": "[\"illustration\"]",
+    "owner": 1,
+    "categories": [
+      10
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 36,
+  "fields": {
+    "image": "https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIxMzQxMzgyNC9vcmlnaW5hbF83YjhjOWRmODFlMjZmZWZkNDMyN2EwN2NmZjNlYjk3MC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo5MH0sImpwZWciOnsicXVhbGl0eSI6OTB9LCJyb3RhdGUiOm51bGx9fQ==?bc=0",
+    "title": "Vrbo Commercial",
+    "description": "",
+    "artist": "Ulterior Productions",
+    "source": "https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIxMzQxMzcxOC9vcmlnaW5hbF84OGIxYTcwOTBlOGE4ZTU0MDRmN2FmMjVhNzZjNTQ5Yi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQ0MCwiaGVpZ2h0Ijo0NDAsImZpdCI6ImNvdmVyIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo5MH0sImpwZWciOnsicXVhbGl0eSI6OTB9LCJyb3RhdGUiOm51bGx9fQ==?bc=0",
+    "year": 2019,
+    "tags": "[]",
+    "owner": 2,
+    "categories": [
+      10
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 37,
+  "fields": {
+    "image": "https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIxMzU5OTA5Ni9vcmlnaW5hbF82MjVmMTJjMjE3OTEzNmY4YmYwMDYzNzM3ZTFiYjNjYS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo5MH0sImpwZWciOnsicXVhbGl0eSI6OTB9LCJyb3RhdGUiOm51bGx9fQ==?bc=0",
+    "title": "Cornelius – FM - Fantasma Remixes",
+    "description": "",
+    "artist": "Masakazu Kitayama",
+    "source": "https://cari.institute/aesthetics/ultramodern-revival",
+    "year": 1999,
+    "tags": "[\"music\", \"\"]",
+    "owner": 2,
+    "categories": [
+      18
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 38,
+  "fields": {
+    "image": "https://pbs.twimg.com/media/El9DrB4VgAMp7Ps?format=jpg&name=4096x4096",
+    "title": "'Infinity' series",
+    "description": "",
+    "artist": "Jens Karlsson",
+    "source": "https://twitter.com/y2k_aesthetic/status/1323851401085136896/photo/4",
+    "year": 2001,
+    "tags": "[\"abstract\", \"dark\"]",
+    "owner": 8,
+    "categories": [
+      19
+    ]
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 39,
+  "fields": {
+    "image": "https://i.scdn.co/image/ab67616d0000b273e3c02b072e4041d0814729ef",
+    "title": "How You Like Me Now? - Single artwork",
+    "description": "m-flo",
+    "artist": "Unknown",
+    "source": "https://open.spotify.com/track/5IVLEnMZOptvXB9FxR07kT",
+    "year": 2000,
+    "tags": "[\"music\", \"musician\"]",
+    "owner": 8,
+    "categories": [
+      6
     ]
   }
 }

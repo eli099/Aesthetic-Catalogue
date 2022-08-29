@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$320000$pKwSzVn4crZuNJQS1DW7hg$wuZBzQqxDgacnEvVabZEtelZmmTKoK+aW0Mr1xN5/nk=",
-    "last_login": "2022-06-11T11:11:27.416Z",
+    "last_login": "2022-06-27T22:42:51.706Z",
     "is_superuser": true,
     "is_staff": true,
     "is_active": true,
@@ -14,9 +14,10 @@
     "first_name": "Eliott",
     "last_name": "McKenzie",
     "bio": "Owner 👨🏾‍💻",
-    "profile_pic": "",
+    "profile_pic": "https://cdn-icons-png.flaticon.com/512/1160/1160283.png",
     "groups": [],
-    "user_permissions": []
+    "user_permissions": [],
+    "favourites": []
   }
 },
 {
@@ -34,9 +35,31 @@
     "first_name": "test",
     "last_name": "test",
     "bio": "",
-    "profile_pic": "",
+    "profile_pic": "https://cdn-icons-png.flaticon.com/512/1160/1160283.png",
     "groups": [],
-    "user_permissions": []
+    "user_permissions": [],
+    "favourites": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$l9k8NJqd9g4N0cNMRWfIJ6$N2lX6+SQEBjac0xtUEk9sLV/mG+DnFGvknqODq0PXJo=",
+    "last_login": null,
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-06-16T07:42:47.356Z",
+    "email": "name@email.com",
+    "username": "name",
+    "first_name": "na",
+    "last_name": "me",
+    "bio": "",
+    "profile_pic": "https://cdn-icons-png.flaticon.com/512/1160/1160283.png",
+    "groups": [],
+    "user_permissions": [],
+    "favourites": []
   }
 }
 ]

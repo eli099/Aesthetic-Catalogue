@@ -6,7 +6,7 @@
  
 To create a full-stack app (deployed online) using my own PostgreSQL database with a Python Django API and React on the front-end. The app must have multiple relationships and CRUD functionality.
  
-Deployment: [Link goes here]
+Deployment: [Link goes here] https://aestheticcatalogue.herokuapp.com/ (Pending)
  
 ### Overview & Concept
  
