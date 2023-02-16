@@ -116,10 +116,13 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # ? Trying stack overflow solution
 
-DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASE_URL = os.environ.get('DATABASE_URL')
 DATABASES = {
-    'default': dj_database_url.config(),
+    'default': dj_database_url.config()
 }
+
+print('the DATABASE_URL type ->', type(os.environ.get('DATABASE_URL')))
+print('the DATABASE_URL value ->', os.environ.get('DATABASE_URL'))
 
 
 # Password validation
