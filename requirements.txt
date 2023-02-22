@@ -7,5 +7,5 @@ pyjwt
 django-on-heroku
 python-environ
 django-environ
-dj-database-url==1.2.0
+dj-database-url
 gunicorn==20.1.0
