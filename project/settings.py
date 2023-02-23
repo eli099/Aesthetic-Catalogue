@@ -12,23 +12,20 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
-# ! Deploying
+# Deploying
+import os
 
 import django_on_heroku
-
-# ? This package allows us to transform the database URL into Django database parameters
-
-import dj_database_url
 
 # ! To create .env file
 import environ
 
 import os
 
+import django_on_heroku
+
 # ! Initialise environment variables
-
 env = environ.Env()
-
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -99,30 +96,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': env('DATABASE_NAME'),
-#         'HOST': 'localhost',
-#         'PORT': 5432
-#     }
-# }
-
-# ! Render deployment
-
-# DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
-# }
-
-# ? Trying stack overflow solution
-
-DATABASE_URL = os.environ.get('DATABASE_URL')
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DATABASE_NAME'),
+        'HOST': 'localhost',
+        'PORT': 5432
+    }
 }
-
-print('the DATABASE_URL type ->', type(os.environ.get('DATABASE_URL')))
-print('the DATABASE_URL value ->', os.environ.get('DATABASE_URL'))
 
 
 # Password validation
@@ -178,7 +159,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-# ! To deploy
+# To deploy
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'client', "build", "static"),
 )
