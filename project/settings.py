@@ -15,14 +15,8 @@ from pathlib import Path
 # Deploying
 import os
 
-import django_on_heroku
-
 # ! To create .env file
 import environ
-
-import os
-
-import django_on_heroku
 
 # ! Initialise environment variables
 env = environ.Env()
@@ -164,4 +158,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'client', "build", "static"),
 )
 
-django_on_heroku.settings(locals())
+# django_on_heroku.settings(locals())
