@@ -35,8 +35,12 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# Added for fly.io deployment
+ALLOWED_HOSTS = [
+    'aesthetic-catalogue',
+    'aesthetic-catalogue.fly.dev',
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -95,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env('DATABASE_NAME'),
         'HOST': 'localhost',
-        'PORT': 5432
+        'PORT': 5433
     }
 }
 
@@ -135,6 +139,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Deployment (fly.io)
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
