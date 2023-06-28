@@ -26,7 +26,7 @@ Users can register and log in to enable them to add, delete and edit posts throu
 - CSS/Sass
 - React Bootstrap
 - Bootstrap
-- React Masonry CSS
+- [React Masonry CSS](https://github.com/paulcollett/react-masonry-css)
 - PyJWT
  
 ### Installation steps
